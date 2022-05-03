@@ -1,0 +1,117 @@
+#extcircle{
+
+   position: relative;
+    border-radius: 50%;
+    border: 50px solid black;
+    width: 300px;
+    height: 300px;
+    border-style:solid;
+    border-width: 10px;
+    margin: auto;
+    margin-top: 112px;
+    
+    box-shadow: 8px 8px 15px 5px #888888;
+}
+
+#topleft{
+    border-top-left-radius: 100%;
+    background-color: darkblue;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /* border: 10px solid black; */
+    bottom: 50%;
+    right: 50%;
+    box-shadow: inset 0em 0em 1em black;
+}
+#topleft:active{
+    background-color: rgb(93, 159, 251);
+}
+#topright{
+    border-top-right-radius: 100%;
+    
+    position:absolute;
+    width: 150px;
+    height: 150px;
+    background-color: darkred;
+    bottom: 50%;
+    left: 50%;
+    box-shadow: inset 0em 0em 1em black;
+    
+    
+}
+#topright:active{
+    background-color: red;
+}
+#bottomleft{
+    border-bottom-left-radius: 100%;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    box-shadow: inset 0em 0em 1em black;
+    
+}
+#bottomright{
+    border-bottom-right-radius: 100%;
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background-color: darkgoldenrod;
+    box-shadow: inset 0em 0em 1em black;
+    
+}
+#bottomright:active{
+    background-color: rgb(251, 251, 18);
+}
+#bottomleft:active{
+    background-color: rgb(4, 249, 4);
+}
+
+#title{
+    position: relative;
+    margin-bottom: 20px;
+}
+#switches{
+    position: relative;
+    margin-bottom: 20px;
+}
+#playerbox{
+    position: absolute;
+    background-color: rgb(37, 157, 170);
+    box-shadow: inset 0em 0em 1em rgb(8, 8, 8);
+    margin:auto;
+    margin-top: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 10px solid black;
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.text2{
+    position: absolute;
+    
+    
+
+}
+#turn {
+    position: absolute;
+    background: #330000;
+    color: red;
+    font-family: courier;
+    font-size: 20px;
+    height: 30px;
+    width: 50px;
+    margin-left: 90px;
+    margin-top: 0px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+  }
