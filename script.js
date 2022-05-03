@@ -19,19 +19,16 @@ const playerBox = document.querySelector("#playerbox");
 const startButton = document.querySelector("#play");
 const resetButton = document.querySelector("#reset");
 const difficultyButton = document.querySelector("#hardmode")
-compTurn = true;
+// compTurn = true;
 
 // sectionId = setInterval(gameTurn, 800);
 
 
 startButton.addEventListener('click', (e) =>{
-    if(startButton.button == true){
-        on = true;
-        streakCounter.innerHTML = '-'
-    } else {
-        on = false;
-        streakCounter.innerHTML ="";
-    }
+        streakCounter.innerText = '-'
+})
+resetButton.addEventListener('click', (e) =>{
+    streakCounter.innerText =''
 })
 
 
