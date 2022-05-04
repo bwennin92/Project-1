@@ -1,14 +1,12 @@
-let playerTurn = [];
+let playerStreak = [];
 let order = [];
-let highLight;
 let turn;
 let complete;
 let compTurn;
 let sectionId;
-let strict = false;
-let on = false;
+let reset = false;
 let difficultHard = false;
-
+let victory;
 const streakCounter = document.querySelector("#turn");
 const topLeft = document.querySelector("#topleft");
 const topRight = document.querySelector("#topright");
@@ -21,15 +19,36 @@ const resetButton = document.querySelector("#reset");
 const difficultyButton = document.querySelector("#hardmode")
 // compTurn = true;
 
-// sectionId = setInterval(gameTurn, 800);
+
+function gameOn(){
+    victory = false;
+    order =[topLeft,topRight,bottomLeft,bottomRight];
+    playerStreak = [];
+    blink = 0;
+    sectionId = 0;
+    turn = 1;
+    streakCounter.innerHTML = 1;
+    complete = true;
+}
+
+let blink = panel => {
+    return new Promise((resolve, reject) =>{
+        panel.className += 'active';
+        setTimeout(() =>{
+            panel.className = panel.className.replace('active', '');
+        }, 500)
+    })
+}
+
+
 
 
 startButton.addEventListener('click', (e) =>{
-        streakCounter.innerText = '-'
+        streakCounter.innerText = '-';
+        gameOn()
 })
 resetButton.addEventListener('click', (e) =>{
     streakCounter.innerText =''
 })
-
 
 

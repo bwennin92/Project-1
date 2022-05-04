@@ -27,6 +27,11 @@
 #topleft:active{
     background-color: rgb(93, 159, 251);
 }
+#topleft.active{
+    background-color: rgb(93, 159, 251);
+
+}
+
 #topright{
     border-top-right-radius: 100%;
     
@@ -40,13 +45,14 @@
     
     
 }
-#topright:active{
-    background-color: red;
-}
-#bottomleft{
-    border-bottom-left-radius: 100%;
-    position: absolute;
-    top: 50%;
+
+    #topright:active{
+        background-color: red;
+    }
+    #bottomleft{
+        border-bottom-left-radius: 100%;
+        position: absolute;
+        top: 50%;
     right: 50%;
     width: 150px;
     height: 150px;
@@ -115,3 +121,6 @@
     vertical-align: middle;
     line-height: 30px;
   }
+
+
+  /* Kagan helped me with getting the colors to activate when clicked on */
