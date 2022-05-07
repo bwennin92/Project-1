@@ -2,7 +2,6 @@ let playerTurn = [];
 let intervalId;
 let round;
 let good;
-let compTurn;
 let blink;
 let win;
 let power = false;
@@ -29,6 +28,40 @@ if(powerButton.checked == true) {
 }else {
     if(powerButton.checked == false)
     streakCounter.innerHTML = '';
-    alert("Powering down :(")
+    // clearAll();
+    // clearInterval(intervalId);
+    alert("Powering down :(");
 }
 })
+startButton.addEventListener('click', (e) => {
+    if(power||win) {
+        gameOn();
+        compTurn(randomColor)
+    }
+})
+
+function gameOn() {
+    win = false;
+    blink = 0;
+    order = [topLeft, topRight, bottomLeft, bottomRight];
+    playerTurn = [];
+    intervalId = 0;
+    turn = 1;
+    streakCounter.innerHTML = 1;
+
+}
+let randomColor = Math.floor(Math.random() * order.length)
+function compTurn() {
+    topLeft.classList.add('active')
+    setTimeout(() => {
+        topLeft.classList.remove('active');
+        topRight.classList.add('active')
+        setTimeout(() => {
+
+            topRight.classList.remove('active')
+            bottomRight.classList.add('active')
+        }, 1500)
+        bottomRight.classList.remove('active')
+    }, 1000)
+}
+
