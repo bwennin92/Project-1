@@ -42,10 +42,10 @@
     bottom: 50%;
     left: 50%;
     box-shadow: inset 0em 0em 1em black;
-    
-    
 }
-
+#topright.active{
+    background-color: red;
+}
     #topright:active{
         background-color: red;
     }
@@ -60,10 +60,15 @@
     box-shadow: inset 0em 0em 1em black;
     
 }
+#bottomleft:active{
+    background-color: rgb(4, 249, 4);
+}
+#bottomleft.active{
+    background-color: rgb(4, 249, 4);
+}
 #bottomright{
     border-bottom-right-radius: 100%;
     position: absolute;
-    
     top: 50%;
     left: 50%;
     width: 150px;
@@ -75,8 +80,8 @@
 #bottomright:active{
     background-color: rgb(251, 251, 18);
 }
-#bottomleft:active{
-    background-color: rgb(4, 249, 4);
+#bottomright.active{
+    background-color: rgb(251, 251, 18);
 }
 
 #title{
@@ -91,7 +96,7 @@
     position: absolute;
     background-color: rgb(37, 157, 170);
     box-shadow: inset 0em 0em 1em rgb(8, 8, 8);
-    margin:auto;
+    margin: auto;
     margin-top: 90px;
     margin-left: 10px;
     margin-right: 10px;
@@ -100,12 +105,17 @@
     font-family: 'Roboto', sans-serif;
     
 }
+.checkboxtext1 {
+    position: absolute;
+    margin-top: -40px;
+    margin-bottom: 0px;
+    margin-left: 120px;
+    margin-right: 0px;
+    
+  }
 
 .text2{
     position: absolute;
-    
-    
-
 }
 #turn {
     position: absolute;
