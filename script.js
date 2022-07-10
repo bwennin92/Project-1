@@ -79,17 +79,10 @@ function compTurn() {
   setTimeout(() => {
     order[randomNum].classList.remove("active");
   }, 1000);
-  //   setTimeout(() =>{
-
-  //   },2000)
-  //   playerClick();
+//this function lets a random number blink. GREAT, but after the player hits the correct sequence how do i make more numbers blink after the play wins the round?
 }
 // Checking player input  to computer sequence before next round
 function checkColor() {
-  if (playerTurn === compTurn) {
-    console.log("Good job!");
-  } else {
-    console.log("FAIL");
-  }
+// i need this function to check if the player hit the correct sequence. Might need an if(playerOrder === compTurn){ console.log("next round")} else{ console.log('Game over!') }
 }
 
