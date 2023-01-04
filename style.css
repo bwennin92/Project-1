@@ -13,7 +13,7 @@
     box-shadow: 8px 8px 15px 5px #888888;
 }
 
-#topleft{
+#blue{
     border-top-left-radius: 100%;
     background-color: darkblue;
     position: absolute;
@@ -24,15 +24,15 @@
     right: 50%;
     box-shadow: inset 0em 0em 1em black;
 }
-#topleft:active{
+#blue:active{
     background-color: rgb(93, 159, 251);
 }
-#topleft.active{
+#blue.active{
     background-color: rgb(93, 159, 251);
 
 }
 
-#topright{
+#red{
     border-top-right-radius: 100%;
     
     position:absolute;
@@ -43,13 +43,13 @@
     left: 50%;
     box-shadow: inset 0em 0em 1em black;
 }
-#topright.active{
+#red.active{
     background-color: red;
 }
-    #topright:active{
+    #red:active{
         background-color: red;
     }
-    #bottomleft{
+    #green{
         border-bottom-left-radius: 100%;
         position: absolute;
         top: 50%;
@@ -60,13 +60,13 @@
     box-shadow: inset 0em 0em 1em black;
     
 }
-#bottomleft:active{
+#green:active{
     background-color: rgb(4, 249, 4);
 }
-#bottomleft.active{
+#green.active{
     background-color: rgb(4, 249, 4);
 }
-#bottomright{
+#yellow{
     border-bottom-right-radius: 100%;
     position: absolute;
     top: 50%;
@@ -77,10 +77,10 @@
     box-shadow: inset 0em 0em 1em black;
     
 }
-#bottomright:active{
+#yellow:active{
     background-color: rgb(251, 251, 18);
 }
-#bottomright.active{
+#yellow.active{
     background-color: rgb(251, 251, 18);
 }
 
