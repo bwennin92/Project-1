@@ -1,71 +1,53 @@
-let playerTurn = [];
-let win;
-let power = false;
-let compBlink = [];
+// let playerTurn = [];
+// let win;
+// let power = false;
+// let compBlink = [];
+let order = [];
+
+
+
 
 const allColors = document.querySelectorAll(".colors");
-
-const streakCounter = document.querySelector("#turn");
-const blue = document.querySelector("#blue");
-const red = document.querySelector("#red");
-const green = document.querySelector("#green");
-const yellow = document.querySelector("#yellow");
+// const streakCounter = document.querySelector("#turn");
+const blue = document.querySelector("#top_left_button");
+const red = document.querySelector("#top_right_button");
+const green = document.querySelector("#bottom_left_button");
+const yellow = document.querySelector("#bottom_right_button");
 const extCircle = document.querySelector("#extcircle");
-const playerBox = document.querySelector("#playerbox");
-const startButton = document.querySelector("#play");
-const powerButton = document.querySelector("#power");
-const resetButton = document.querySelector("#reset");
-const difficultyButton = document.querySelector("#hardmode");
+// const playerBox = document.querySelector("#playerbox");
+// const startButton = document.querySelector("#play");
+// const powerButton = document.querySelector("#power");
+// const resetButton = document.querySelector("#reset");
+// const difficultyButton = document.querySelector("#hardmode");
 
-// this notifies the player
-powerButton.addEventListener("click", (e) => {
-  if (powerButton.checked == true) {
-    power = true;
-    streakCounter.innerHTML = "-";
-    alert("Power is on!");
-  } else {
-    if (powerButton.checked == false) streakCounter.innerHTML = "";
-    alert("Powering down :(");
-  }
-});
-// this starts the game after the player hits the "power checkbox"
-startButton.addEventListener("click", (e) => {
-    if (power || win) {
-        gameOn();
-        compTurn();
-        clickRight = false;
-          }});
-
-function gameOn() {
-  win = false;
-  order = [blue, red, green, yellow];
-  guessClicks = [];
-  turn = 1;
-  streakCounter.innerHTML = 1;
-  checkColor();
-}
 
 // this needs to randomize the colors
 function randomBlink() {
-  let order = [blue, red, green, yellow];
-  let randomColor = Math.floor(Math.random() * order.length);
-  return randomColor;
+  let randomOrder = [blue, red, green, yellow];
+  return randomOrder[parseInt(Math.random() * randomOrder.length)];
 };
 // This lets us set the rounds up
 const sequence = [randomBlink()];
 let guessClicks = [...sequence];
 // computer makes random colors
-function compTurn() {
-  let randomNum = randomBlink();
+const compTurn = allColors => {
+  return new Promise((resolve,reject) =>{
+    allColors.className += 'active';
+    setTimeout(() => {
+      allColors.className = allColors.className.replace(
+        'active',
+        ''
+      );
+      setTimeout(() =>{
+        resolve();
+      }, 500);
+    }, 1000);
+  });
+};
 
-  order[randomNum].classList.add("active");
-  compBlink.push(order[randomNum]);
-  console.log(compBlink);
-  setTimeout(() => {
-    order[randomNum].classList.remove("active");
-  }, 1000);
 //this function lets a random number blink. GREAT, but after the player hits the correct sequence how do i make more numbers blink after the player wins the round?
-}
+
+
 
 let clickRight = false;
 
@@ -82,4 +64,11 @@ const checkColor = checkColor => {
   }
 };
 
-
+const gameOn = async () => {
+  clickRight = false;
+  for (const allColors of sequence){
+    await compTurn(allColors)
+  }
+  clickRight = true;
+}
+gameOn();

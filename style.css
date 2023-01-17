@@ -1,136 +1,129 @@
-#extcircle{
+#extcircle {
+  position: relative;
+  border-radius: 50%;
+  border: 50px solid black;
+  width: 300px;
+  height: 300px;
+  border-style: solid;
+  border-width: 10px;
+  margin: auto;
+  margin-top: 112px;
 
-   position: relative;
-    border-radius: 50%;
-    border: 50px solid black;
-    width: 300px;
-    height: 300px;
-    border-style:solid;
-    border-width: 10px;
-    margin: auto;
-    margin-top: 112px;
-    
-    box-shadow: 8px 8px 15px 5px #888888;
-}
-
-#blue{
-    border-top-left-radius: 100%;
-    background-color: darkblue;
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    /* border: 10px solid black; */
-    bottom: 50%;
-    right: 50%;
-    box-shadow: inset 0em 0em 1em black;
-}
-#blue:active{
-    background-color: rgb(93, 159, 251);
-}
-#blue.active{
-    background-color: rgb(93, 159, 251);
-
+  box-shadow: 8px 8px 15px 5px #888888;
 }
 
-#red{
-    border-top-right-radius: 100%;
-    
-    position:absolute;
-    width: 150px;
-    height: 150px;
-    background-color: darkred;
-    bottom: 50%;
-    left: 50%;
-    box-shadow: inset 0em 0em 1em black;
+#top_left_button {
+  border-top-left-radius: 100%;
+  background-color: darkblue;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  /* border: 10px solid black; */
+  bottom: 50%;
+  right: 50%;
+  box-shadow: inset 0em 0em 1em black;
 }
-#red.active{
-    background-color: red;
+#top_left_button:active {
+  background-color: rgb(93, 159, 251);
 }
-    #red:active{
-        background-color: red;
-    }
-    #green{
-        border-bottom-left-radius: 100%;
-        position: absolute;
-        top: 50%;
-    right: 50%;
-    width: 150px;
-    height: 150px;
-    background-color: green;
-    box-shadow: inset 0em 0em 1em black;
-    
-}
-#green:active{
-    background-color: rgb(4, 249, 4);
-}
-#green.active{
-    background-color: rgb(4, 249, 4);
-}
-#yellow{
-    border-bottom-right-radius: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 150px;
-    height: 150px;
-    background-color: darkgoldenrod;
-    box-shadow: inset 0em 0em 1em black;
-    
-}
-#yellow:active{
-    background-color: rgb(251, 251, 18);
-}
-#yellow.active{
-    background-color: rgb(251, 251, 18);
+#top_left_button.active {
+  background-color: rgb(93, 159, 251);
 }
 
-#title{
-    position: relative;
-    margin-bottom: 20px;
+#top_right_button {
+  border-top-right-radius: 100%;
+
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: darkred;
+  bottom: 50%;
+  left: 50%;
+  box-shadow: inset 0em 0em 1em black;
 }
-#switches{
-    position: relative;
-    margin-bottom: 20px;
+#top_right_button.active {
+  background-color: red;
 }
-#playerbox{
-    position: absolute;
-    background-color: rgb(37, 157, 170);
-    box-shadow: inset 0em 0em 1em rgb(8, 8, 8);
-    margin: auto;
-    margin-top: 90px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border: 10px solid black;
-    padding: 50px;
-    font-family: 'Roboto', sans-serif;
-    
+#top_right_button:active {
+  background-color: red;
+}
+#bottom_left_button {
+  border-bottom-left-radius: 100%;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  box-shadow: inset 0em 0em 1em black;
+}
+#bottom_left_button:active {
+  background-color: rgb(4, 249, 4);
+}
+#bottom_left_button.active {
+  background-color: rgb(4, 249, 4);
+}
+#bottom_right_button {
+  border-bottom-right-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: darkgoldenrod;
+  box-shadow: inset 0em 0em 1em black;
+}
+#bottom_right_button:active {
+  background-color: rgb(251, 251, 18);
+}
+#bottom_right_button.active {
+  background-color: rgb(251, 251, 18);
+}
+
+#title {
+  position: relative;
+  margin-bottom: 20px;
+}
+#switches {
+  position: relative;
+  margin-bottom: 20px;
+}
+#playerbox {
+  position: absolute;
+  background-color: rgb(37, 157, 170);
+  box-shadow: inset 0em 0em 1em rgb(8, 8, 8);
+  margin: auto;
+  margin-top: 90px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 10px solid black;
+  padding: 50px;
+  font-family: "Roboto", sans-serif;
 }
 .checkboxtext1 {
-    position: absolute;
-    margin-top: -40px;
-    margin-bottom: 0px;
-    margin-left: 120px;
-    margin-right: 0px;
-    
-  }
+  position: absolute;
+  margin-top: -40px;
+  margin-bottom: 0px;
+  margin-left: 120px;
+  margin-right: 0px;
+}
 
-.text2{
-    position: absolute;
+.text2 {
+  position: absolute;
 }
 #turn {
-    position: absolute;
-    background: #330000;
-    color: red;
-    font-family: courier;
-    font-size: 20px;
-    height: 30px;
-    width: 50px;
-    margin-left: 90px;
-    margin-top: 0px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 30px;
-  }
+  position: absolute;
+  background: #330000;
+  color: red;
+  font-family: courier;
+  font-size: 20px;
+  height: 30px;
+  width: 50px;
+  margin-left: 90px;
+  margin-top: 0px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+}
 
-
-  /* Kagan helped me with getting the colors to activate when clicked on */
+/* Kagan helped me with getting the colors to activate when clicked on */
