@@ -1,4 +1,4 @@
-const startButton = document.querySelector("#play");
+const playButton = document.querySelector("#play");
 // 👇 this is used in the main execution loop of the game
 var i = 0
 
@@ -48,8 +48,8 @@ addMove()
 // 👇 start main execution loop
 compTurn()
 
-
-  startButton.addEventListener("click", () =>{
+//👇 when you hit the play button it begins the game or at least makes the colors blink. also noticed the more i hit the play button the more moves it adds duh brandon the function ADDMOVE() derp.
+  playButton.addEventListener("click", () =>{
 addMove()
 compTurn()
   })
