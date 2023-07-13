@@ -1,85 +1,119 @@
-let playerTurn = [];
-let win;
-let power = false;
-let compBlink = [];
+const playButton = document.querySelector("#play");
+// 👇 this is used in the main execution loop of the game
+var i = 0
 
-const allColors = document.querySelectorAll(".colors");
+// 👇 this will be the entire history of the simon says
+var sequence = []
 
-const streakCounter = document.querySelector("#turn");
-const blue = document.querySelector("#blue");
-const red = document.querySelector("#red");
-const green = document.querySelector("#green");
-const yellow = document.querySelector("#yellow");
-const extCircle = document.querySelector("#extcircle");
-const playerBox = document.querySelector("#playerbox");
-const startButton = document.querySelector("#play");
-const powerButton = document.querySelector("#power");
-const resetButton = document.querySelector("#reset");
-const difficultyButton = document.querySelector("#hardmode");
+let gameInProgress = false;
+ let playerInput = []
 
-// this notifies the player
-powerButton.addEventListener("click", (e) => {
-  if (powerButton.checked == true) {
-    power = true;
-    streakCounter.innerHTML = "-";
-    alert("Power is on!");
-  } else {
-    if (powerButton.checked == false) streakCounter.innerHTML = "";
-    alert("Powering down :(");
+// was overcomplicating the problem
+// 👇 this query will get all of the buttons
+const allColors = document.querySelectorAll('.colors')
+// this records the players input👇
+function playerClick(){
+  document.addEventListener('click', (e)=>{
+    const clickedColorIndex = Array.from(allColors).indexOf(e.target);
+    
+    if (clickedColorIndex !== -1){
+    playerInput.push(clickedColorIndex);
+    console.log(playerInput)
+    checkGameState();
   }
-});
-// this starts the game after the player hits the "power checkbox"
-startButton.addEventListener("click", (e) => {
-    if (power || win) {
-        gameOn();
-        compTurn();
-        clickRight = false;
-          }});
-
-function gameOn() {
-  win = false;
-  order = [blue, red, green, yellow];
-  guessClicks = [];
-  turn = 1;
-  streakCounter.innerHTML = 1;
-  checkColor();
+  });
 }
 
-// this needs to randomize the colors
-function randomBlink() {
-  let order = [blue, red, green, yellow];
-  let randomColor = Math.floor(Math.random() * order.length);
-  return randomColor;
-};
-// This lets us set the rounds up
-const sequence = [randomBlink()];
-let guessClicks = [...sequence];
-// computer makes random colors
-function compTurn() {
-  let randomNum = randomBlink();
-
-  order[randomNum].classList.add("active");
-  compBlink.push(order[randomNum]);
-  console.log(compBlink);
-  setTimeout(() => {
-    order[randomNum].classList.remove("active");
-  }, 1000);
-//this function lets a random number blink. GREAT, but after the player hits the correct sequence how do i make more numbers blink after the player wins the round?
+//this will keep adding moves to the game when the player follows the colors correctly
+function addMoreMoves(){
+  addMove();
+  compTurn();
+  playerInput = []
+  gameInProgress = true;
 }
 
-let clickRight = false;
+function checkGameState() {
+  if (!gameCompare()) {
+    // Player lost the game
+    console.log("You lost the game!");
+    gameInProgress = false;
+  } else if (playerInput.length === sequence.length) {
+    // Player's input matches, but more moves are needed
+    console.log("Correct! Continue playing!");
+    // This is when we need to add more moves
+    setTimeout(addMoreMoves, 1000)
+  }
+}
 
-const checkColor = checkColor => {
-  if(!clickRight) return;
-  const colorPop = guessClicks.shift();
-  if (colorPop === checkColor) {
-    if (guessClicks.length === 0) {
-      sequence.push(randomBlink());
-      guessClicks = [...sequence];
+
+function gameCompare(){
+  for (let i = 0; i < sequence.length; i++) {
+    if (playerInput[i] !== sequence[i]) {
+      return false; // Player's input doesn't match, game lost
     }
-  }else {
-    alert('Sorry try again!')
   }
-};
+  return true; // Player's input matches, game continues
+
+}
 
 
+// 👇 now you can light them up like this
+function randomQuadrant() {
+  // 👇 keep stuff like this concise
+  return Math.floor(Math.random() * allColors.length)
+}
+
+function addMove() {
+  // 👇 add random number to the sequence
+  sequence.push(randomQuadrant())
+
+  // 👇 make sure sequence starts at zero
+  i = 0
+}
+
+function compTurn() {
+  // 👇 add "glow" effect to quadrant
+  allColors[sequence[i]].classList.add("active")
+
+  // 👇 remove "glow" effect after x amount of time
+  setTimeout(function () {
+    allColors[sequence[i]].classList.remove("active")
+    i++
+    if (i < sequence.length) {
+      compTurn()
+    }
+    // 👇 sets the delay between blinks in milliseconds
+  }, 500)
+  // 💡 you could also allow the player to specify a time modifier (i.e. slow or fast, easy or hard)
+}
+
+// 👇 add a random number to the seq
+// addMove()
+
+// 👇 start main execution loop
+// compTurn()
+
+
+
+//👇 when you hit the play button it begins the game or at least makes the colors blink. also noticed the more i hit the play button the more moves it adds duh brandon the function ADDMOVE() derp.
+  playButton.addEventListener("click", () =>{
+    if(!gameInProgress){
+      sequence = []
+      playerInput = []
+      addMove();
+      compTurn();
+      gameInProgress=true;
+      playerClick()
+      playButton.removeEventListener('click', playerClick)
+      setTimeout(() =>{
+        if(!gameCompare()){
+          console.log("game over!")
+          gameInProgress = false;
+        }
+      }, (sequence.length + 1) * 1000)
+    }
+
+console.log(sequence)
+})
+
+console.log(playerInput)
