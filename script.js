@@ -5,8 +5,9 @@ var i = 0
 // 👇 this will be the entire history of the simon says
 var sequence = []
 
-click = 0
+let gameInProgress = false;
  let playerInput = []
+
 // was overcomplicating the problem
 // 👇 this query will get all of the buttons
 const allColors = document.querySelectorAll('.colors')
@@ -14,18 +15,47 @@ const allColors = document.querySelectorAll('.colors')
 function playerClick(){
   document.addEventListener('click', (e)=>{
     const clickedColorIndex = Array.from(allColors).indexOf(e.target);
-    // console.log(clickedColorIndex);
+    
+    if (clickedColorIndex !== -1){
     playerInput.push(clickedColorIndex);
     console.log(playerInput)
-    click = 0
+    checkGameState();
+  }
   });
 }
 
+//this will keep adding moves to the game when the player follows the colors correctly
+function addMoreMoves(){
+  addMove();
+  compTurn();
+  playerInput = []
+  gameInProgress = true;
+}
 
-// function addPlayerInput() {
-//   playerInput.push(playerClick())
-//   console.log(addPlayerInput)
-// }
+function checkGameState() {
+  if (!gameCompare()) {
+    // Player lost the game
+    console.log("You lost the game!");
+    gameInProgress = false;
+  } else if (playerInput.length === sequence.length) {
+    // Player's input matches, but more moves are needed
+    console.log("Correct! Continue playing!");
+    // This is when we need to add more moves
+    setTimeout(addMoreMoves, 1000)
+  }
+}
+
+
+function gameCompare(){
+  for (let i = 0; i < sequence.length; i++) {
+    if (playerInput[i] !== sequence[i]) {
+      return false; // Player's input doesn't match, game lost
+    }
+  }
+  return true; // Player's input matches, game continues
+
+}
+
 
 // 👇 now you can light them up like this
 function randomQuadrant() {
@@ -58,7 +88,7 @@ function compTurn() {
 }
 
 // 👇 add a random number to the seq
-addMove()
+// addMove()
 
 // 👇 start main execution loop
 // compTurn()
@@ -67,9 +97,23 @@ addMove()
 
 //👇 when you hit the play button it begins the game or at least makes the colors blink. also noticed the more i hit the play button the more moves it adds duh brandon the function ADDMOVE() derp.
   playButton.addEventListener("click", () =>{
-addMove();
-compTurn();
-playerClick()
-console.log(sequence);
+    if(!gameInProgress){
+      sequence = []
+      playerInput = []
+      addMove();
+      compTurn();
+      gameInProgress=true;
+      playerClick()
+      playButton.removeEventListener('click', playerClick)
+      setTimeout(() =>{
+        if(!gameCompare()){
+          console.log("game over!")
+          gameInProgress = false;
+        }
+      }, (sequence.length + 1) * 1000)
+    }
+
+console.log(sequence)
 })
+
 console.log(playerInput)
